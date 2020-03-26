@@ -5,24 +5,29 @@ import Exam from './Conponent/Exams/Exam'
 import SearchStudent from './Conponent/Students/SearchStudent';
 import NewExam from './Conponent/NewExam/NewExam'
 import Results from './Conponent/Results/Results'
-
 import { BrowserRouter as   Router, Route } from 'react-router-dom';
 
-function App() {
+ function App() {
 
-  
+//   const kontejner={
+//     display:grid,
+//     grid-template-columns:1fr 2fr
+//   }
+
   return (
     <div>
+    
     <Router>
-    <SideBar/>
+    <SideBar>
       <Route path="/exams" component={Exam}/>
       <Route path="/students" component={SearchStudent}/>
       <Route path="/results" component={Results}/>
       <Route path="/createExam" component={NewExam}/>
+      </SideBar>
     </Router>
 
 
-    </div>
+    </div> 
   );
 }
 
