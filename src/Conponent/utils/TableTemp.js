@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/styles';
 import React, { useState } from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import clsx from 'clsx';
-import mockData from './data';
 import Link from 'react-router-dom/Link'
 
 import {
@@ -35,13 +34,10 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'flex-end'
   }
 }));
-const SearchStudent = props =>{
+const TableTemp = props =>{
 
 	const { className, ...rest } = props;
-	const [users] = useState(mockData);
 	const classes = useStyles();
-  
-	const [selectedUsers, setSelectedUsers] = useState([]);
 	const [rowsPerPage, setRowsPerPage] = useState(10);
 	const [page, setPage] = useState(0);
   
@@ -64,29 +60,22 @@ const SearchStudent = props =>{
 				  <Table>
 					<TableHead>
 					  <TableRow>
-						<TableCell>Name</TableCell>
-						<TableCell>Email</TableCell>
-						<TableCell>Index</TableCell>
-						<TableCell>Exams</TableCell>
-						<TableCell>Profile</TableCell>
+                        {props.cells.map(cell =>(
+                            <TableCell>{cell}</TableCell>
+                        ))
+                        }
 					  </TableRow>
 					</TableHead>
 					<TableBody>
-					  {users.slice(0, rowsPerPage).map(user => (
+					  {props.data.slice(0, rowsPerPage).map(collumn => (
 						<TableRow
 						  className={classes.tableRow}
-						  hover
-						  key={user.id}
-						  selected={selectedUsers.indexOf(user.id) !== -1}
 						>
-						  <TableCell>
-							  	{user.name}
-						  </TableCell>
-						  <TableCell>{user.email}</TableCell>
-						  <TableCell>
-							{user.index}
-						  </TableCell>
-						  <TableCell>{user.exams}</TableCell>
+                            {collumn.map(cl => (
+                                <TableCell>
+                                {cl.name}
+                                </TableCell>
+                            ))} 
 						  <TableCell>
 							<Link to='/exams'>Profile ></Link>
 						  </TableCell>
@@ -100,7 +89,7 @@ const SearchStudent = props =>{
 			<CardActions className={classes.actions}>
 			  <TablePagination
 				component="div"
-				count={users.length}
+				count={props.data.length}
 				onChangePage={handlePageChange}
 				onChangeRowsPerPage={handleRowsPerPageChange}
 				page={page}
@@ -111,6 +100,4 @@ const SearchStudent = props =>{
 		  </Card>
         )
     }
-
-
-export default SearchStudent
+export default TableTemp

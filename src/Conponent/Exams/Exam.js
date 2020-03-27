@@ -1,47 +1,14 @@
-import React, { Component } from 'react';
-import Card from 'react-bootstrap/Card'
-import ListGroup from 'react-bootstrap/ListGroup'
-class Exam extends React.Component{
-	constructor(){
-		super();
-		this.state = {
-			exams: []
-		  }
-	}
-    componentDidMount() {
-        fetch('http://localhost:8080/exams')
-        .then(res => res.json())
-        .then((data) => {
-			console.log("exam strana " + data.audioText)
-          this.setState({ exams: data })
-        })
-		.catch(console.log)
-      }
-
-    render(){
-		const { exams } = this.state;
+import React, { Component, useState } from 'react';
+import TableTemp from '../utils/TableTemp' 
+import mockData from './data';
+function Exam (){
+	const [users] = useState(mockData);
+	const cells = ['name','mail','index','exams','profiles'];
         return(
             <div>
-                <Card className="container">
-					<Card.Body>
-                        <Card.Header>Exams</Card.Header>
-						<ListGroup className="list" data-search-on-list="list">
-						{exams.map((exam)=>(
-						<ListGroup.Item>
-							<a href="#">
-							{exam.startDate} {exam.endDate}, {exam.status} , {exam.finished}
-							</a>
-						</ListGroup.Item>
-						))}
-						</ListGroup>
-					{/* <Card.Link className="button-close" href="#" onClick={novi exam}>New</Card.Link> */}
-					</Card.Body>
-
-				</Card>
+				<TableTemp data={users} cells={cells}/>
             </div>
         )
     }
-    
-}
 
 export default Exam

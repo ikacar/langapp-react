@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import './SideBar.scss';
-import './SearchBar.scss';
 import {Link} from 'react-router-dom'
 
 import Drawer from '@material-ui/core/Drawer'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 
@@ -17,6 +13,7 @@ import StudentIcon from '@material-ui/icons/Person'
 import ResultsIcon from '@material-ui/icons/PlaylistAddCheck'
 import CreateNewIcon from '@material-ui/icons/AddCircleOutline'
 import { makeStyles } from '@material-ui/core/styles';
+import { Grid } from '@material-ui/core';
 
 const drawerWidth = 180;
 
@@ -28,13 +25,14 @@ const drawerWidth = 180;
 		zIndex: theme.zIndex.drawer + 1,
 	  },
 	  drawer: {
-		width: drawerWidth,
+		// width: drawerWidth,
 		flexShrink: 0,
 	  },
 	  drawerPaper: {
-		width: drawerWidth,
+		// width: drawerWidth,
 	  },
 	  content: {
+		  
 		flexGrow: 1,
 		padding: theme.spacing(3),
 	  },
@@ -48,39 +46,45 @@ function SideBar(props) {
 	const classes = useStyles();
 
     return(
-		<div>	
-		<Drawer
-		className={classes.drawer}
-		variant="permanent"
-		classes={{
-		  paper: classes.drawerPaper,
-		}}
-	  >
-		<div className={classes.toolbar} />
-		<MenuList>
-			<MenuItem component={Link} to='/exams'>
-				<ListItemIcon><ExamIcon/></ListItemIcon>
-				<ListItemText primary={'Exams'} />
-			</MenuItem>
-			<MenuItem component={Link} to='/students'>
-				<ListItemIcon><StudentIcon/></ListItemIcon>
-				<ListItemText primary={'Students'} />
-			</MenuItem>
-			<MenuItem component={Link} to='/results'>
-				<ListItemIcon><ResultsIcon/></ListItemIcon>
-				<ListItemText primary={'Results'} />
-			</MenuItem>
-			<MenuItem component={Link} to='/createNew'>
-				<ListItemIcon><CreateNewIcon/></ListItemIcon>
-				<ListItemText primary={'Create New'} />
-			</MenuItem>
-		</MenuList>
-		  </Drawer>
-		  <main className={classes.content}>
-		  <div className={classes.toolbar} />
-			{props.children}
-		</main>
-		</div>
+	<div className={classes.wraper}>
+		<Grid container>	
+			<Grid item xs='2'>
+				<Drawer
+				className={classes.drawer}
+				variant="permanent"
+				classes={{
+				paper: classes.drawerPaper,
+				}}
+			>
+				<div className={classes.toolbar} />
+				<MenuList>
+					<MenuItem component={Link} to='/exams'>
+						<ListItemIcon><ExamIcon/></ListItemIcon>
+						<ListItemText primary={'Exams'} />
+					</MenuItem>
+					<MenuItem component={Link} to='/students'>
+						<ListItemIcon><StudentIcon/></ListItemIcon>
+						<ListItemText primary={'Students'} />
+					</MenuItem>
+					<MenuItem component={Link} to='/results'>
+						<ListItemIcon><ResultsIcon/></ListItemIcon>
+						<ListItemText primary={'Results'} />
+					</MenuItem>
+					<MenuItem component={Link} to='/createNew'>
+						<ListItemIcon><CreateNewIcon/></ListItemIcon>
+						<ListItemText primary={'Create New'} />
+					</MenuItem>
+				</MenuList>
+				</Drawer>
+			</Grid>
+			<Grid item xs='10'>
+				<main className={classes.content}>
+					<div className={classes.toolbar} />
+						{props.children}
+				</main>
+			</Grid>
+		</Grid>
+	</div>
     );
 }
 
