@@ -71,10 +71,10 @@ const TableTemp = props =>{
 						<TableRow
 						  className={classes.tableRow}
 						>
-                            {collumn.map(cl => (
+                            {props.cells.map(cl => (
                                 <TableCell>
-                                {cl.name}
-                                </TableCell>
+                                    {/* TODO ovaj deo skripi */}
+                                    {collumn[cl]}                                 </TableCell>
                             ))} 
 						  <TableCell>
 							<Link to='/exams'>Profile ></Link>
