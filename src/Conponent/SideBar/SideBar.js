@@ -70,7 +70,7 @@ function SideBar(props) {
 						<ListItemIcon><ResultsIcon/></ListItemIcon>
 						<ListItemText primary={'Results'} />
 					</MenuItem>
-					<MenuItem component={Link} to='/createNew'>
+					<MenuItem component={Link} to='/createExam'>
 						<ListItemIcon><CreateNewIcon/></ListItemIcon>
 						<ListItemText primary={'Create New'} />
 					</MenuItem>

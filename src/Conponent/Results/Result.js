@@ -1,43 +1,35 @@
 import React, { Component } from 'react';
-import Tabs from 'react-bootstrap/Tabs';
-import Tab from 'react-bootstrap/Tabs';
-import Text from './Results/Text';
-import Audio from './Results/Audio'
-class Result extends React.Component{
-    constructor(){
-		super();
-		this.state = {
-			result: []
-		  }
-    }
-    
-    componentDidMount() {
-        fetch('http://localhost:8080/result/student/20')
-        .then(res => res.json())
-        .then((data) => {
-          this.setState({ result: data})
-        })
-        .catch(console.log)
-      }
+import {
+  AppBar,
+  Tabs,
+  Tab,
+  TabPanel
+} from '@material-ui/core'
+function Result (props){
 
 
-render() {
-    const {result} = this.state;
     return (
+        <div>
+                  <AppBar position="static">
+          <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+            <Tab label="Item One" {...a11yProps(0)} />
+            <Tab label="Item Two" {...a11yProps(1)} />
+            <Tab label="Item Three" {...a11yProps(2)} />
+          </Tabs>
+        </AppBar>
+        <TabPanel value={value} index={0}>
+          Item One
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          Item Two
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          Item Three
+        </TabPanel>
 
-        <Tabs defaultActiveKey="native">
-            <Tab eventKey="native" title="Native">
-                <Text name="ilija" res={result.nativeTranslate}></Text>
-            </Tab>
-            <Tab eventKey="foreign" title="Foreign">
-                <Text name="biljana" res={result.foreignTranslate}></Text>
-            </Tab>
-            <Tab eventKey="audio" title="Audio"> 
-                <Audio name="milica" res={result.audioTranslate}></Audio>
-            </Tab>                 
-        </Tabs>
+        </div>
     )
-  }
+  
 }
 
 export default Result
