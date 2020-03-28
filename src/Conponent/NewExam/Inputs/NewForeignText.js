@@ -32,7 +32,6 @@ function NewForeignText (props) {
                     label="Text"
                     multiline
                     rowsMax="25"
-                    placeholder="Input foreign text here"
                     onChange={handleChange}
                     variant="outlined"
                     />  
