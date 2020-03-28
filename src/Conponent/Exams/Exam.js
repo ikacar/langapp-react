@@ -7,6 +7,7 @@ function Exam (){
         return(
             <div>
 				<TableTemp data={users} cells={cells}/>
+                <div></div>
             </div>
         )
     }
