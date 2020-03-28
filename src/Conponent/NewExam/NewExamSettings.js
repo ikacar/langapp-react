@@ -5,6 +5,10 @@ import DateFnsUtils from '@date-io/date-fns';
 import TextField from '@material-ui/core/TextField';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+
 import {
     MuiPickersUtilsProvider,
     KeyboardDatePicker,
@@ -25,8 +29,12 @@ function NewExamSettings (props){
   };
     return(
         <div>
-  
-        <Paper>
+            <AppBar position="static" color="default">
+                <Tabs  aria-label="simple tabs example">
+                    <Tab label="Settings"/>
+                </Tabs>
+            </AppBar>
+            <Paper>
             <Grid container direction='column' spacing='3' alignItems='center'>
                 <Grid item>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}   >
@@ -86,8 +94,8 @@ function NewExamSettings (props){
                         />
                 </Grid>
             </Grid>
-
             </Paper>
+        
         </div>
     )
 }
