@@ -11,11 +11,14 @@ function NewExam(props){
         <div>
             <Grid container direction='column' alignItems='stretch' spacing='3'>
                 <Grid item >
-                    <Grid container spacing='2'>
+                    <Grid container   
+                            direction="row"
+                            justify="space-between"
+                            alignItems="flex-start">
                         <Grid item xs='9'>
                             <NewExamFields/>
                         </Grid>
-                        <Grid item xs='3'>
+                        <Grid item >
                             <NewExamSettings/>
                         </Grid>
                     </Grid>

@@ -15,7 +15,7 @@ import CreateNewIcon from '@material-ui/icons/AddCircleOutline'
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 
-const drawerWidth = 180;
+const drawerWidth = 220;
 
 	const useStyles = makeStyles(theme => ({
 	  root: {
@@ -25,11 +25,15 @@ const drawerWidth = 180;
 		zIndex: theme.zIndex.drawer + 1,
 	  },
 	  drawer: {
-		// width: drawerWidth,
-		flexShrink: 0,
+		//   TODO videti kako sirina da se resi 
+		//  width: 'auto',
+		// flexShrink: 0,
+		width: drawerWidth,
 	  },
 	  drawerPaper: {
-		// width: drawerWidth,
+		//  width: 'auto',
+		width: drawerWidth,
+
 	  },
 	  content: {
 		  

@@ -59,23 +59,23 @@ function  NewExamFields (props) {
   
         return (
                <div className={classes.root}>
-      <AppBar position="static" color="default">
-        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab label="Foreign" {...a11yProps(0)} />
-          <Tab label="Native" {...a11yProps(1)} />
-          <Tab label="Audio" {...a11yProps(2)} />
-        </Tabs>
-      </AppBar>
-      <TabPanel value={value} index={0}>
-        <NewForeignText/>
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-      <NewNativeText/>
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <NewAudio/>
-      </TabPanel>
-    </div>
+                <AppBar position="static" color="default">
+                  <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+                    <Tab label="Foreign" {...a11yProps(0)} />
+                    <Tab label="Native" {...a11yProps(1)} />
+                    <Tab label="Audio" {...a11yProps(2)} />
+                  </Tabs>
+                </AppBar>
+                <TabPanel value={value} index={0}>
+                  <NewForeignText/>
+                </TabPanel>
+                <TabPanel value={value} index={1}>
+                <NewNativeText/>
+                </TabPanel>
+                <TabPanel value={value} index={2}>
+                  <NewAudio/>
+                </TabPanel>
+              </div>
         );
     
 }

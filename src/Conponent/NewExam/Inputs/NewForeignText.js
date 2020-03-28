@@ -23,16 +23,16 @@ function NewForeignText (props) {
   
     return (
         <div>   
-                  <Typography variant="h5" gutterBottom>
-                    Foreign text
-                </Typography>
+            <Typography variant="h5" gutterBottom>
+              Foreign text
+            </Typography>
                 <TextField
                     fullWidth 
                     id="filled-multiline-flexible"
                     label="Text"
                     multiline
                     rowsMax="25"
-                    placeholder="Input foreign text here"
+                    placeholder="Input Foreign Text Here"
                     onChange={handleChange}
                     variant="outlined"
                     />  

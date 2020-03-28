@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+import TextField from '@material-ui/core/TextField';   
+import Typography from '@material-ui/core/Typography'                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -22,13 +23,16 @@ function NewNativeText (props) {
   
     return (
         <div>
+          <Typography variant="h5" gutterBottom>
+            Native text
+          </Typography>
             <TextField
                 fullWidth
                 id="filled-multiline-flexible"
-                label="Multiline"
+                label="Text"
                 multiline
                 rowsMax="25"
-                value={value}
+                placeholder="Input Native Text Here"
                 onChange={handleChange}
                 variant="outlined"
                 />  
