@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import clsx from 'clsx';
 import Link from 'react-router-dom/Link'
+import withStyles from "@material-ui/core/styles/withStyles";
 
 import {
 	Card,
@@ -34,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'flex-end'
   }
 }));
-const TableTemp = props =>{
+const TableTemp = props => {
 
 	const { className, ...rest } = props;
 	const classes = useStyles();
@@ -42,62 +43,67 @@ const TableTemp = props =>{
 	const [page, setPage] = useState(0);
   
 	const handlePageChange = (event, page) => {
-	  setPage(page);
+		setPage(page);
 	};
   
 	const handleRowsPerPageChange = event => {
-	  setRowsPerPage(event.target.value);
+		setRowsPerPage(event.target.value);
 	};
 
-        return(
-		<Card elevation={3}
-			{...rest}
-			className={clsx(classes.root, className)}
-		  >
+    const StyledTableCell = withStyles((theme) => ({
+        head: {
+            backgroundColor: theme.palette.common.black,
+            color: theme.palette.common.white,
+        },
+        body: {
+            fontSize: 14,
+        },
+    }))(TableCell);
+
+	return(
+		<Card elevation={3} {...rest} className={clsx(classes.root, className)}>
 			<CardContent className={classes.content}>
-			  <PerfectScrollbar>
-				<div className={classes.inner}>
-				  <Table>
-					<TableHead>
-					  <TableRow>
-                        {props.cells.map(cell =>(
-                            <TableCell>{cell}</TableCell>
-                        ))
-                        }
-					  </TableRow>
-					</TableHead>
-					<TableBody>
-					  {props.data.slice(0, rowsPerPage).map(collumn => (
-						<TableRow
-						  className={classes.tableRow}
-						>
-                            {props.cells.map(cl => (
-                                <TableCell>
-                                    {/* TODO ovaj deo skripi */}
-                                    {collumn[cl]}                                 </TableCell>
-                            ))} 
-						  <TableCell>
-							<Link to='/exams'>Profile ></Link>
-						  </TableCell>
-						</TableRow>
-					  ))}
-					</TableBody>
-				  </Table>
-				</div>
-			  </PerfectScrollbar>
+				<PerfectScrollbar>
+					<div className={classes.inner}>
+						<Table>
+							<TableHead>
+								<TableRow>
+									{props.cells.map(cell =>(
+										<StyledTableCell>{cell}</StyledTableCell>
+									))}
+								</TableRow>
+							</TableHead>
+							<TableBody>
+								{props.data.slice(0, rowsPerPage).map(collumn => (
+									<TableRow className={classes.tableRow}>
+										{props.cells.map(cl => (
+											<TableCell>
+                                                {/* TODO ovaj deo skripi */}
+                                                {collumn[cl]}
+											</TableCell>
+										))}
+										<TableCell>
+											<Link to='/exams'>Profile ></Link>
+										</TableCell>
+									</TableRow>
+								))}
+							</TableBody>
+						</Table>
+					</div>
+				</PerfectScrollbar>
 			</CardContent>
 			<CardActions className={classes.actions}>
-			  <TablePagination
-				component="div"
-				count={props.data.length}
-				onChangePage={handlePageChange}
-				onChangeRowsPerPage={handleRowsPerPageChange}
-				page={page}
-				rowsPerPage={rowsPerPage}
-				rowsPerPageOptions={[5, 10, 25]}
-			  />
+				<TablePagination
+					component="div"
+					count={props.data.length}
+					onChangePage={handlePageChange}
+					onChangeRowsPerPage={handleRowsPerPageChange}
+					page={page}
+					rowsPerPage={rowsPerPage}
+					rowsPerPageOptions={[5, 10, 25]}
+				/>
 			</CardActions>
-		  </Card>
-        )
-    }
+		</Card>
+	)
+}
 export default TableTemp

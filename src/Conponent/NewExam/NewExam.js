@@ -7,29 +7,18 @@ import React from 'react';
 function NewExam(props){
 
     return(
-
         <div>
-            <Grid container direction='column' alignItems='stretch' spacing='3'>
-                <Grid item >
-                    <Grid container   
-                            direction="row"
-                            justify="space-between"
-                            alignItems="flex-start">
-                        <Grid item xs='9'>
-                            <NewExamFields/>
-                        </Grid>
-                        <Grid item >
-                            <NewExamSettings/>
-                        </Grid>
-                    </Grid>
+            <Grid container spacing={5}>
+                <Grid item xs = '9'>
+                    <NewExamFields/>
                 </Grid>
-                <Grid item>
-                    <Grid container
-                        direction="row"
-                        justify="flex-end"
-                        alignItems="flex-end">
+                <Grid item xs='3'>
+                    <NewExamSettings/>
+                </Grid>
+            </Grid>
+            <Grid container spacing={5} direction="row" justify="flex-end">
+                <Grid item xs='5'>
                     <NewExamButtons/>
-                    </Grid>
                 </Grid>
             </Grid>
         </div>

@@ -30,8 +30,8 @@ function NewNativeText (props) {
                 fullWidth
                 id="filled-multiline-flexible"
                 label="Text"
-                multiline
-                rowsMax="25"
+                multiline={true}
+                rows="15"
                 placeholder="Input Native Text Here"
                 onChange={handleChange}
                 variant="outlined"
