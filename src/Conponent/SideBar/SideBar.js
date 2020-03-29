@@ -15,7 +15,6 @@ import CreateNewIcon from '@material-ui/icons/AddCircleOutline'
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 
-const drawerWidth = 220;
 
 	const useStyles = makeStyles(theme => ({
 	  root: {
@@ -25,18 +24,11 @@ const drawerWidth = 220;
 		zIndex: theme.zIndex.drawer + 1,
 	  },
 	  drawer: {
-		//   TODO videti kako sirina da se resi 
-		//  width: 'auto',
-		// flexShrink: 0,
-		width: drawerWidth,
 	  },
 	  drawerPaper: {
-		//  width: 'auto',
-		width: drawerWidth,
 
 	  },
 	  content: {
-		  
 		flexGrow: 1,
 		padding: theme.spacing(3),
 	  },
@@ -52,36 +44,36 @@ function SideBar(props) {
     return(
 	<div className={classes.wraper}>
 		<Grid container>	
-			<Grid item xs='2'>
+			<Grid item md='2'>
 				<Drawer
 				className={classes.drawer}
 				variant="permanent"
 				classes={{
 				paper: classes.drawerPaper,
 				}}
-			>
+				>
 				<div className={classes.toolbar} />
-				<MenuList>
-					<MenuItem component={Link} to='/exams'>
-						<ListItemIcon><ExamIcon/></ListItemIcon>
-						<ListItemText primary={'Exams'} />
-					</MenuItem>
-					<MenuItem component={Link} to='/students'>
-						<ListItemIcon><StudentIcon/></ListItemIcon>
-						<ListItemText primary={'Students'} />
-					</MenuItem>
-					<MenuItem component={Link} to='/results'>
-						<ListItemIcon><ResultsIcon/></ListItemIcon>
-						<ListItemText primary={'Results'} />
-					</MenuItem>
-					<MenuItem component={Link} to='/createExam'>
-						<ListItemIcon><CreateNewIcon/></ListItemIcon>
-						<ListItemText primary={'Create New'} />
-					</MenuItem>
-				</MenuList>
+					<MenuList>
+						<MenuItem component={Link} to='/exams'>
+							<ListItemIcon><ExamIcon/></ListItemIcon>
+							<ListItemText primary={'Exams'} />
+						</MenuItem>
+						<MenuItem component={Link} to='/students'>
+							<ListItemIcon><StudentIcon/></ListItemIcon>
+							<ListItemText primary={'Students'} />
+						</MenuItem>
+						<MenuItem component={Link} to='/results'>
+							<ListItemIcon><ResultsIcon/></ListItemIcon>
+							<ListItemText primary={'Results'} />
+						</MenuItem>
+						<MenuItem component={Link} to='/createExam'>
+							<ListItemIcon><CreateNewIcon/></ListItemIcon>
+							<ListItemText primary={'Create New'} />
+						</MenuItem>
+					</MenuList>
 				</Drawer>
 			</Grid>
-			<Grid item xs='10'>
+			<Grid item md='10'>
 				<main className={classes.content}>
 					<div className={classes.toolbar} />
 						{props.children}

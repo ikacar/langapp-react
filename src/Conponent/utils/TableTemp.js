@@ -50,7 +50,7 @@ const TableTemp = props =>{
 	};
 
         return(
-		<Card
+		<Card elevation={3}
 			{...rest}
 			className={clsx(classes.root, className)}
 		  >

@@ -88,7 +88,7 @@ const SearchStudent = props =>{
 						  </TableCell>
 						  <TableCell>{user.exams}</TableCell>
 						  <TableCell>
-							<Link to='/exams'>Profile ></Link>
+							<Link to='/student'>Profile ></Link>
 						  </TableCell>
 						</TableRow>
 					  ))}
